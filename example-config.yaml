@@ -1,0 +1,87 @@
+telegram:
+    api_id: 0
+    api_hash: https://my.telegram.org
+    slave_bot_token: https://t.me/BotFather
+sql:
+    # See: https://docs.sqlalchemy.org/en/14/core/engines.html
+    # NOTE: This must be an ASYNC engine! (see: https://docs.sqlalchemy.org/en/14/orm/extensions/asyncio.html)
+    uri: postgresql+asyncpg://scott:tiger@localhost/test
+    # print debug SQL info
+    debug: false
+    # how big to make the query pool should be, this determines
+    # how many queries sukuinote can make at any given time.
+    poolsize: 20
+logging:
+    # The rate (in seconds) at which messages are sent to the log chats from the log rings.
+    # Note that anything under 1 second is likely to get floodwaited.
+    send_rate: 1
+    # The size of the ring buffers, these will buffer messages (you can check with
+    # the ping command how many pending messages are in the rings). If the rings
+    # fill up, new messages will be discarded until the rings empty enough.
+    # The numbers are the max number of messages a ring can store.
+    regular_ring_size: 200
+    spammy_ring_size: 5000
+    # Regular logs (reports, bans, etc.)
+    regular: -1000000000000
+    # Spam logs (user joins, user adds)
+    spammy: -1000000000000
+    # Chats to ignore ban logging (like ban groups)
+    ignore_chat_bans:
+        - -1000000000000
+        - -1000000000000
+        - -1000000000000
+    # Chats to ignore reports (like other userbot logs)
+    ignore_chat_reports:
+        - -1000000000000
+    ## Logging options
+    # Log user bios, this can get you floodwaited if your
+    # accounts see a lot of joins
+    log_join_bios: false
+    log_user_joins: true
+    log_user_adds: true
+    log_reports: true
+    log_forwards: true
+    log_bans: true
+    log_warns: true
+config:
+    prefixes:
+        - .
+    # The telegram accounts you want to login to, you only need one API ID and Hash to
+    # login to all the accounts. Prefix the accounts with `test:` to login to telegram's
+    # testing servers.
+    sessions:
+        - blankie
+        - knees
+        - nezuko
+        - test:blank_x
+    # Track mass add events, you need the antispam.py module from
+    # the extras repo.
+    massadd:
+        enabled: true
+        # How many users must be added to trip a mass-add event
+        threshold: 10
+        # How much time (in seconds) until they can add more users.
+        cooldown: 300
+    pmpermit:
+        enabled: True
+        # How many messages they can send before we warn them
+        # about being considered spam
+        warnretard: 5
+        # How many messages since the first message
+        # they sent until they're considered spam and will
+        # be blocked.
+        maxretard: 7
+    spamwatch_api: https://t.me/SpamWatchBot
+    owlantispam_api: https://t.me/OwlAntiSpam
+    bolverwatch_api: https://t.me/JoinProtectionBot
+    # Timezone for the .time command
+    timezone: America/Los_Angeles
+    # Check for blacklists and active spammers with @SpamProtectionBot
+    do_spb_check: true
+    # Check added users (can slow the bot down during mass-adds)
+    # against @SpamProtectionBot to see if they're blacklisted or active spammers
+    spb_check_adds: false
+    # If enabled, this will prevent all logins from succeeding unless you
+    # explicitly tell the userbot to allow it. Check the `Authorizations`
+    # section in the userbot help for commands
+    strict_logins: false

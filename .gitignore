@@ -1,0 +1,8 @@
+__pycache__/
+sessions/
+config.yaml
+runtime/
+shadowhawk/plugins/justasic/
+unknown_errors.txt
+*.db
+.vscode

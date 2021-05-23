@@ -1,0 +1,18 @@
+# https://github.com/ssut/py-googletrans/issues/234#issuecomment-736314530
+git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
+
+pyrogram>=1.2.4
+tgcrypto
+requests
+aiohttp>=3.7.1
+PyYAML
+forex-python
+arrow
+pillow
+sqlalchemy>=1.4.0b3
+humanize
+dateparser
+pint
+intellivoid-spb
+pyee
+asyncpg
